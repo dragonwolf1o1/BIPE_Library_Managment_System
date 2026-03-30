@@ -83,7 +83,7 @@ $errorMessage = flash('error');
         <?php include __DIR__ . '/../includes/admin_portal_header.php'; ?>
         <div class="top-bar" style="background:#fff; border-bottom:1px solid #e2e8f0;">
             <div class="welcome-msg">
-                <h2 style="color:#0f172a;">Issue & Return</h2>
+                <h2 style="color:#0f172a;">Issue & Returns</h2>
                 <p style="color:#94a3b8;">Manage live circulation and waitlist requests.</p>
             </div>
             <div class="profile-area">
