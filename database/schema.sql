@@ -93,6 +93,19 @@ CREATE TABLE IF NOT EXISTS contact_messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS remember_tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_type ENUM('student', 'admin') NOT NULL,
+    user_id INT NOT NULL,
+    selector CHAR(32) NOT NULL UNIQUE,
+    token_hash CHAR(64) NOT NULL,
+    expires_at DATETIME NOT NULL,
+    last_used_at DATETIME NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_remember_user (user_type, user_id),
+    INDEX idx_remember_expiry (expires_at)
+);
+
 INSERT INTO admins (name, email, password)
 SELECT 'Library Admin', 'admin@lms.com', '$2y$12$mkQ9bGIeavKGbWLs4Q3tJe2hRyCHx3BSnbvlcSdeboLr1V39EyZOG'
 WHERE NOT EXISTS (SELECT 1 FROM admins WHERE email = 'admin@lms.com');

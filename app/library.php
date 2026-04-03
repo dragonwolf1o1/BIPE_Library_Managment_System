@@ -43,6 +43,35 @@ function sync_overdue_items(): void
     }
 }
 
+function borrow_limit_validation_message(int $attempts = 0): string
+{
+    if ($attempts > 6) {
+        return 'Bhai, is field me sirf 1, 2, ya 3 hi chalega.';
+    }
+
+    if ($attempts >= 6) {
+        return 'Bhai, ab bhi galat value aa rahi hai. 1 se 3 ke beech hi rakho.';
+    }
+
+    if ($attempts >= 3) {
+        return 'Bhai, ek baar aur clear kar deta hoon: borrow limit sirf 1, 2, ya 3 hi hai.';
+    }
+
+    return 'Borrow limit 4 ya usse zyada allowed nahi hai. Please 1, 2, ya 3 use karein.';
+}
+
+function increment_borrow_limit_invalid_attempts(): int
+{
+    $_SESSION['borrow_limit_invalid_attempts'] = (int) ($_SESSION['borrow_limit_invalid_attempts'] ?? 0) + 1;
+
+    return (int) $_SESSION['borrow_limit_invalid_attempts'];
+}
+
+function reset_borrow_limit_invalid_attempts(): void
+{
+    unset($_SESSION['borrow_limit_invalid_attempts']);
+}
+
 function register_student(array $input): array
 {
     $name = trim((string) ($input['name'] ?? ''));
@@ -52,6 +81,15 @@ function register_student(array $input): array
     $password = (string) ($input['password'] ?? '');
     $department = resolve_department($input);
     $borrowLimit = max(1, (int) ($input['no_book_issued'] ?? 3));
+
+    if ($borrowLimit >= 4) {
+        return [
+            'success' => false,
+            'message' => borrow_limit_validation_message(increment_borrow_limit_invalid_attempts()),
+        ];
+    }
+
+    reset_borrow_limit_invalid_attempts();
 
     if ($name === '' || $course === '' || $semester === '' || $email === '' || $password === '' || !$department) {
         return ['success' => false, 'message' => 'Please fill in all required fields.'];

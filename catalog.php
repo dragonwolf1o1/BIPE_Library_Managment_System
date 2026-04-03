@@ -109,7 +109,7 @@ $badges = [
 
     <header class="header">
         <a href="<?= e(url('index.php')) ?>" class="logo">
-            <i class="fas fa-book-reader"></i> LMS
+            <img src="<?= e(url('assets/images/image.png')) ?>" alt="BIPE Library Management System" style="height: 56px; width: auto; display: block; border-radius: 14px; background: #fff; padding: 6px 10px; box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);">
         </a>
         <nav>
             <?php foreach ($navLinks as $link): ?>
@@ -246,7 +246,7 @@ $badges = [
                 <h3>Contact Us</h3>
                 <p><i class="fas fa-envelope"></i> bipe@gmail.com</p>
                 <p><i class="fas fa-phone-alt"></i> +91 2234567654</p>
-                <p><i class="fas fa-map-marker-alt"></i> BIPE varanshi India</p>
+                <p><i class="fas fa-map-marker-alt"></i> Gajokhar, Pindra, Varanasi, Uttar Pradesh, India</p>
             </div>
         </div>
         <div class="footer-bottom">

@@ -20,7 +20,7 @@
             <h3>Contact Us</h3>
             <p><i class="fas fa-envelope"></i> bipe@gmail.com</p>
             <p><i class="fas fa-phone-alt"></i> +91 2234567654</p>
-            <p><i class="fas fa-map-marker-alt"></i> BIPE varanshi India</p>
+            <p><i class="fas fa-map-marker-alt"></i> Gajokhar, Pindra, Varanasi, Uttar Pradesh, India</p>
         </div>
     </div>
     <div class="site-footer-bottom">

@@ -95,6 +95,18 @@ function ensure_schema(mysqli $db): void
             status ENUM('new', 'read') NOT NULL DEFAULT 'new',
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )",
+        "CREATE TABLE IF NOT EXISTS remember_tokens (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_type ENUM('student', 'admin') NOT NULL,
+            user_id INT NOT NULL,
+            selector CHAR(32) NOT NULL UNIQUE,
+            token_hash CHAR(64) NOT NULL,
+            expires_at DATETIME NOT NULL,
+            last_used_at DATETIME NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_remember_user (user_type, user_id),
+            INDEX idx_remember_expiry (expires_at)
+        )",
     ];
 
     foreach ($statements as $statement) {
