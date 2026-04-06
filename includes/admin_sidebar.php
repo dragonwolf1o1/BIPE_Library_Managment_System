@@ -3,7 +3,7 @@ $activePage = $activePage ?? '';
 ?>
 <div class="sidebar" style="background: #0f172a; border-right: 1px solid rgba(255,255,255,0.05);">
     <div class="sidebar-logo" style="color: #c5a059;">
-        <i class="fas fa-crown"></i> LMS Admin
+        <img src="<?= e(url('assets/images/image.png')) ?>" alt="BIPE Library Management System" style="height: 70px; width: auto; display: block; border-radius: 16px; background: #fff; padding: 8px 10px; box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);">
     </div>
     <div class="nav-links">
         <a href="<?= e(url('admin/dashboard.php')) ?>" class="<?= $activePage === 'dashboard' ? 'active' : '' ?>"><i class="fas fa-chart-pie"></i> Dashboard</a>

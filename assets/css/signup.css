@@ -13,7 +13,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 18px;
         }
 
         /* Deep, rich overlay matching login page */
@@ -29,77 +29,144 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 450px;
-            padding: 30px 30px; /* Reduced vertical padding */
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
+            max-width: 760px;
+            padding: 24px 26px;
+            background: rgba(8, 20, 43, 0.58);
+            border-radius: 24px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.18);
             animation: fadeInUp 0.8s ease;
         }
 
         .logo-area {
             text-align: center;
-            margin-bottom: 15px; /* Reduced margin */
+            margin-bottom: 18px;
         }
 
         .logo-area h2 {
             font-family: 'Playfair Display', serif;
             color: #fff;
-            font-size: 24px; /* Reduced font size */
-            margin-bottom: 2px;
+            font-size: 28px;
+            margin-bottom: 6px;
             letter-spacing: 1px;
         }
 
         .logo-area p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 12px; /* Reduced font size */
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 13px;
             font-weight: 300;
         }
 
         /* Form Grid Layout for a cleaner look */
         .form-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px; /* Reduced gap between inputs */
-            margin-bottom: 15px; /* Reduced margin */
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px 16px;
+            margin-bottom: 14px;
         }
 
         .input-group {
             position: relative;
         }
 
+        .input-group-wide {
+            grid-column: 1 / -1;
+        }
+
         /* Identical Input Styles to Login Page */
         .input-group input, 
         .input-group select {
             width: 100%;
-            padding: 12px 15px; /* Reduced padding */
+            min-height: 52px;
+            padding: 14px 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px; /* Slightly smaller radius */
+            border-radius: 14px;
             color: #fff;
-            font-size: 13px; /* Reduced font size */
+            font-size: 14px;
             outline: none;
             transition: all 0.3s ease;
             appearance: none; 
             font-family: 'Poppins', sans-serif;
         }
 
+        .input-group input.is-invalid {
+            border-color: #f87171;
+            background: rgba(248, 113, 113, 0.08);
+            box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.12);
+        }
+
+        .field-hint {
+            display: block;
+            margin-top: 8px;
+            padding-left: 4px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+
+        .field-warning {
+            display: none;
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(248, 113, 113, 0.12);
+            border: 1px solid rgba(248, 113, 113, 0.28);
+            color: #fecaca;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .field-warning.is-visible {
+            display: block;
+        }
+
         /* Custom Dropdown Arrow */
         .select-wrapper {
             position: relative;
         }
+
+        .select-wrapper select {
+            padding-right: 62px;
+            background:
+                linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(255, 255, 255, 0.04));
+            border-color: rgba(212, 175, 55, 0.28);
+        }
+
         .select-wrapper::after {
-            content: "▼";
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.4);
+            content: "";
             position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+            right: 18px;
+            top: 19px;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+            transform: rotate(45deg);
             pointer-events: none;
+            opacity: 0.9;
+        }
+
+        .select-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            pointer-events: none;
+        }
+
+        .select-caption {
+            display: block;
+            margin-top: 8px;
+            padding-left: 4px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
         }
 
         /* Styling the option tags for readability */
@@ -112,9 +179,9 @@
         /* Glowing effect on focus matching login page */
         .input-group input:focus,
         .input-group select:focus {
-            border-color: #d4af37; /* Premium Gold Accent */
+            border-color: #d4af37;
             background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.12), 0 14px 26px rgba(0, 0, 0, 0.16);
         }
 
         .input-group input::placeholder,
@@ -132,18 +199,18 @@
         /* Premium Button Identical to Login */
         button {
             width: 100%;
-            padding: 12px; /* Reduced padding */
+            padding: 14px;
             background: linear-gradient(135deg, #d4af37 0%, #aa8715 100%);
             color: #111;
             font-family: 'Poppins', sans-serif;
-            font-size: 14px; /* Reduced font size */
+            font-size: 14px;
             font-weight: 600;
             border: none;
-            border-radius: 8px; /* Slightly smaller radius */
+            border-radius: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-            margin-top: 5px;
+            margin-top: 2px;
         }
 
         button:hover {
@@ -153,9 +220,9 @@
 
         .login-link {
             text-align: center;
-            margin-top: 15px; /* Reduced margin */
+            margin-top: 14px;
             color: rgba(255, 255, 255, 0.6);
-            font-size: 12px; /* Reduced font size */
+            font-size: 13px;
         }
 
         .login-link a {
@@ -178,12 +245,22 @@
         /* Responsive adjustments for mobile */
         @media (max-width: 600px) {
             .signup-container {
-                padding: 25px 20px;
+                max-width: 460px;
+                padding: 22px 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
         }
   
 @media (max-width: 520px) {
     .signup-container {
-        padding: 24px 18px;
+        padding: 20px 16px;
+    }
+
+    .logo-area h2 {
+        font-size: 24px;
     }
 }
